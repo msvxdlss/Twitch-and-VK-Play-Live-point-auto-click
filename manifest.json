@@ -1,22 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "PointClicks",
-  "short_name": "MSVXPC",
-  "version": "2.0",
-  "description": "VK Play Live and Twitch point clicker (kick is possible)",
-  "icons": {"16": "/icon/icon16.png", "48": "/icon/icon48.png", "128": "/icon/icon128.png"},
-  "permissions": ["scripting"],
-  
+  "name": "Twitch and VK point clicker",
+  "short_name": "LPYPC",
+  "version": "3.0",
+  "description": "Twitch and VK Video Live point clicker",
+  "icons": {"16": "icon/icon16.png", "48": "icon/icon48.png", "128": "icon/icon128.png"},
   "content_scripts": [{
     "matches": ["*://*.live.vkvideo.ru/*"],
     "js": ["vk.js"]}, {
     
     "matches": ["*://*.twitch.tv/*"],
-    "js": ["tw.js"] }, {
-    
-    "matches": ["*://*.kick.com/*"],
-    "js": ["kick.js"] 
-    
+    "js": ["tw.js"]
   }
   ]
 }
