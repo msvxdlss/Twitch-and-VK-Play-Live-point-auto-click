@@ -4,13 +4,7 @@
   let lastClick = 0;
 
   const SUMMARY_SEL = '.community-points-summary';
-  const BONUS_SEL = [
-    '.claimable-bonus__icon',
-    'button[aria-label="Claim Bonus"]',
-    'button[aria-label*="Claim"]',
-    'button[aria-label*="Бонус"]',
-    'button[aria-label*="бонус"]',
-  ].join(',');
+  const BONUS_SEL = '.claimable-bonus__icon, button[aria-label="Claim Bonus"]';
 
   function tryClaim(scope) {
     const found = (scope || document).querySelector(BONUS_SEL);
@@ -30,10 +24,6 @@
     tryClaim(summary);
   }
 
-  // Дешевый фильтр на добавленные узлы: на сообщение чата — пара проверок
-  // класса (микросекунды), тяжелый поиск — только когда приехал нужный узел.
-  // Поэтому не страшны ни медленная загрузка, ни пересборка чата (7TV):
-  // когда бы summary/сундук ни появились и на какой бы глубине — поймаем.
   function handleNode(node) {
     if (node.nodeType !== 1) return;
     if (node.matches(SUMMARY_SEL)) {
@@ -60,7 +50,6 @@
     }
   }).observe(document.body, { childList: true, subtree: true });
 
-  // Вдруг все уже на месте к моменту запуска
   const existing = document.querySelector(SUMMARY_SEL);
   if (existing) watchSummary(existing);
   else tryClaim();

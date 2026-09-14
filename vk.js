@@ -3,7 +3,6 @@
   let footerNode = null;
   let lastClick = 0;
 
-  // Префиксные селекторы вместо точных классов с хешем (хеш меняется при сборке)
   const FOOTER_SEL = '[class*="PointActions_root_"], [class*="DropBox_"], [class*="PointActions_"]';
   const BONUS_SEL = 'button[class*="PointActions_buttonBonus_"], button[class*="DropBox_root_"]';
 
@@ -25,10 +24,6 @@
     tryClaim(footer);
   }
 
-  // Дешевый фильтр на добавленные узлы: на сообщение чата — пара проверок
-  // класса (микросекунды), тяжелый поиск — только когда приехал нужный узел.
-  // Поэтому не страшны ни медленная загрузка, ни пересборка чата:
-  // когда бы футер/бонус ни появились и на какой бы глубине — поймаем.
   function handleNode(node) {
     if (node.nodeType !== 1) return;
     if (node.matches(FOOTER_SEL)) {
@@ -55,7 +50,7 @@
     }
   }).observe(document.body, { childList: true, subtree: true });
 
-  // Вдруг все уже на месте к моменту запуска
+
   const existing = document.querySelector(FOOTER_SEL);
   if (existing) watchFooter(existing);
   else tryClaim();
