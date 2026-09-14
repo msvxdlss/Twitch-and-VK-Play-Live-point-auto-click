@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Twitch and VK point clicker",
   "short_name": "LPYPC",
-  "version": "3.0",
+  "version": "3.2",
   "description": "Twitch and VK Video Live point clicker",
   "icons": {"16": "icon/icon16.png", "48": "icon/icon48.png", "128": "icon/icon128.png"},
   "content_scripts": [{

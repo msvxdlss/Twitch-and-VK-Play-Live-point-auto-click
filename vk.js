@@ -3,7 +3,7 @@
   let footerNode = null;
   let lastClick = 0;
 
-  const FOOTER_SEL = '[class*="PointActions_root_"], [class*="DropBox_"], [class*="PointActions_"]';
+  const FOOTER_SEL = '[class*="PointActions_"], [class*="DropBox_"]';
   const BONUS_SEL = 'button[class*="PointActions_buttonBonus_"], button[class*="DropBox_root_"]';
 
   function tryClaim(scope) {
@@ -49,7 +49,6 @@
       for (let i = 0; i < added.length; i++) handleNode(added[i]);
     }
   }).observe(document.body, { childList: true, subtree: true });
-
 
   const existing = document.querySelector(FOOTER_SEL);
   if (existing) watchFooter(existing);
